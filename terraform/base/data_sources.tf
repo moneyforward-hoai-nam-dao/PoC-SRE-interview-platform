@@ -6,17 +6,17 @@ data "aws_caller_identity" "current" {}
 
 data "aws_instance" "worker_instance" {
   instance_tags = {
-    "eks:cluster-name" =  var.eks_cluster_name
+    "eks:cluster-name"   = var.eks_cluster_name
     "eks:nodegroup-name" = var.node_group_name
   }
 
   filter {
-    name = "vpc-id"
+    name   = "vpc-id"
     values = [aws_vpc.this.id]
   }
 
   filter {
-    name = "instance-state-name"
+    name   = "instance-state-name"
     values = ["pending", "running"]
   }
 

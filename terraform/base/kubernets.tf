@@ -35,8 +35,8 @@ resource "kubernetes_deployment" "test" {
           }
           resources {
             limits = {
-              cpu    =  var.cpu_limit
-              memory =  var.mem_limit
+              cpu    = var.cpu_limit
+              memory = var.mem_limit
             }
           }
 

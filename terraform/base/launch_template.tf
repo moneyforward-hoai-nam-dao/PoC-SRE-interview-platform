@@ -1,5 +1,5 @@
 resource "aws_launch_template" "launch_temple_v2" {
-  name                   =  var.launch_template_name
+  name                   = var.launch_template_name
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.additional_security_launch_template.id, aws_eks_cluster.this.vpc_config[0].cluster_security_group_id]
 }

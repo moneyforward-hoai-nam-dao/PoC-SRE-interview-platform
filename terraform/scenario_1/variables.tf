@@ -9,6 +9,10 @@ variable "region" {
   default = "ap-southeast-1"
 }
 
+variable "iam_user_name" {
+  default = "sre-interviewee"
+}
+
 #############################################
 # EKS cluster variables
 #############################################
@@ -49,6 +53,10 @@ variable "capacity_size" {
   default = "ON_DEMAND"
 }
 
+variable "server_worker_role_name" {
+  default = "pbl-04-2022-Worker-Role"
+}
+
 #############################################
 # K8S variables
 #############################################
@@ -66,4 +74,12 @@ variable "image_id" {
 
 variable "container_name" {
   default = "go-client-container"
+}
+
+
+#############################################
+# EKS server
+#############################################
+variable "eks_cluster_name" {
+  default = "pbl-04-2022-cluster"
 }

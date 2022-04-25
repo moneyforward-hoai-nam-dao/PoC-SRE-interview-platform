@@ -17,6 +17,17 @@ provider "aws" {
 }
 
 provider "kubernetes" {
+  alias                  = "k8s-server"
+  host                   = data.aws_eks_cluster.server.endpoint
+  cluster_ca_certificate = base64decode(data.aws_eks_cluster.server.certificate_authority[0].data)
+  exec {
+    api_version = "client.authentication.k8s.io/v1alpha1"
+    args        = ["eks", "get-token", "--cluster-name", "${var.eks_cluster_name}"]
+    command     = "aws"
+  }
+}
+
+provider "kubernetes" {
   alias                  = "k8s-client"
   host                   = aws_eks_cluster.client.endpoint
   cluster_ca_certificate = base64decode(aws_eks_cluster.client.certificate_authority[0].data)

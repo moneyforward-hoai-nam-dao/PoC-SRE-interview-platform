@@ -1,5 +1,6 @@
 resource "aws_iam_user" "interviewee" {
-  name = "sre-interviewee"
+  name          = var.iam_user_name
+  force_destroy = true
 
   tags = {
     team = "SRE"
@@ -50,4 +51,8 @@ resource "aws_iam_user_login_profile" "interviewee_profile" {
   user                    = aws_iam_user.interviewee.name
   password_reset_required = false
   password_length         = 32
+}
+
+resource "aws_iam_access_key" "sre_interviewee" {
+  user = aws_iam_user.interviewee.name
 }

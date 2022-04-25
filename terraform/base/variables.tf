@@ -78,6 +78,10 @@ variable "desired_worker_in_server" {
   default = 1
 }
 
+variable "worker_role_name" {
+  default = "pbl-04-2022-Worker-Role"
+}
+
 #############################################
 # K8S variables
 #############################################

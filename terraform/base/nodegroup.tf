@@ -17,7 +17,7 @@ resource "aws_eks_node_group" "this" {
 
   launch_template {
     id      = aws_launch_template.launch_temple_v2.id
-    version =  aws_launch_template.launch_temple_v2.latest_version
+    version = aws_launch_template.launch_temple_v2.latest_version
   }
 
   tags = merge(
@@ -34,7 +34,7 @@ resource "aws_eks_node_group" "this" {
 
 # EKS Node IAM Role
 resource "aws_iam_role" "node" {
-  name = "${var.project}-Worker-Role"
+  name = var.worker_role_name
 
   assume_role_policy = <<POLICY
 {

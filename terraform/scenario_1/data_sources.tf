@@ -13,5 +13,8 @@ data "aws_subnets" "public" {
     name   = "cidr-block"
     values = ["10.0.0.0/24", "10.0.1.0/24"]
   }
+}
 
+data "aws_eks_cluster" "server" {
+  name = var.eks_cluster_name
 }

@@ -1,8 +1,8 @@
 # EKS Cluster
 resource "aws_eks_cluster" "this" {
   name     = var.eks_cluster_name
-  role_arn =  aws_iam_role.cluster.arn
-  version  =  var.cluster_version
+  role_arn = aws_iam_role.cluster.arn
+  version  = var.cluster_version
 
   vpc_config {
     subnet_ids              = flatten([aws_subnet.public[*].id, aws_subnet.private[*].id])
