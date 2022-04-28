@@ -56,7 +56,15 @@ after mapRoles section
 
 9. Get some informations from output and send them to interviewee
 
-10. Terraform destroy 
+10. After interviewee has information, interviewee can access to K8s cluster with some commands
+```
+aws configure --profile sre-interviewee   // type access key, secret key just received 
+export AWS_DEFAULT_PROFILE="sre-interviewee"
+aws eks update-kubeconfig --region  ap-southeast-1 --name pbl-04-2022-cluster 
+```
+
+11. Terraform destroy 
+
 Remove mapUser section added above and run: 
 ```
 terraform destroy -var-file="secret.tfvars" --auto-approve
